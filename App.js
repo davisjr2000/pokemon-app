@@ -15,7 +15,7 @@ const RootStack = createBottomTabNavigator({
   Pokémons: {
     screen: PokemonList,
   },
-  Home: {
+  Create: {
     screen: Home,
   },
 });

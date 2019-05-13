@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 
 export default class PokemonList extends React.Component {
   state = {
@@ -24,14 +24,21 @@ export default class PokemonList extends React.Component {
 
   }
 
+  renderItem = ({ item }) => (
+    <View>
+      <Text>{item.name}</Text>
+      <Text>{item.description}</Text>
+    </View>
+  );
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>Pokémons!</Text>
-        {this.state.pokemons.map(pokemon => {
-           return <Text key={pokemon.id}>{pokemon.name}</Text>
-        })}
-
+       <FlatList
+         data={this.state.pokemons}
+         keyExtractor={item => item.id}
+         renderItem={this.renderItem}
+        />
       </View>
     );
   }
