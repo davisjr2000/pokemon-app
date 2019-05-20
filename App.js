@@ -2,21 +2,14 @@ import React from 'react'
 import { Text, View } from 'react-native';
 import { createBottomTabNavigator, createStackNavigator, createDrawerNavigator ,createAppContainer} from 'react-navigation'
 import PokemonList from './src/components/PokemonList'
-
-const Home = () => {
-  return(
-    <View>
-      <Text>Home</Text>
-    </View>
-    )
-}
+import PokemonForm from './src/components/PokemonForm'
 
 const RootStack = createBottomTabNavigator({
   Pokémons: {
     screen: PokemonList,
   },
   Create: {
-    screen: Home,
+    screen: PokemonForm,
   },
 });
 
