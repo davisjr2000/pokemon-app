@@ -17,14 +17,18 @@ export default class PokemonForm extends React.Component {
     const api = axios.create({
       baseURL: 'http://localhost:3000/api/v1'
     })
-     const response = await api.post('/pokemons',value)
+     await api.post('/pokemons',value)
+     .then(function(response){
+        if (response.status == 200){
+          // redirect
+          this.props.navigation.navigate('Home')
+        } else {
+          alert("Error!")
+        }
+        console.log(response.status)
+      });
    }
 
-
-  state = {
-    name: "",
-    description: ""
-  }
 
   render() {
     return (

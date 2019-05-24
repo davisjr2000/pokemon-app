@@ -25,9 +25,9 @@ export default class PokemonList extends React.Component {
   }
 
   renderItem = ({ item }) => (
-    <View>
-      <Text>{item.name}</Text>
-      <Text>{item.description}</Text>
+    <View style={styles.pokemonContainer}>
+      <Text style={styles.pokemonTitle}>{item.name}</Text>
+      <Text style={styles.pokemonDescription}>{item.description}</Text>
     </View>
   );
 
@@ -35,6 +35,7 @@ export default class PokemonList extends React.Component {
     return (
       <View style={styles.container}>
        <FlatList
+        contentContainerStyle={styles.list}
          data={this.state.pokemons}
          keyExtractor={item => item.id}
          renderItem={this.renderItem}
@@ -48,7 +49,27 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  list: {
+    padding: 20
+  },
+  pokemonContainer: {
+    backgroundColor: "#fafafa",
+    borderWidth: 1,
+    borderColor: "#DDD",
+    borderRadius: 5,
+    padding: 20,
+    marginBottom: 20,
+  },
+  pokemonTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#333",
+  },
+  pokemonDescription: {
+    fontSize: 16,
+    color: "#999",
+    marginTop: 5,
+    lineHeight: 24,
   },
 });
